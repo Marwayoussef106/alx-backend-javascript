@@ -1,16 +1,19 @@
 /**
- * Retrieves ids from a list of students.
+ * Retrieves the sum of ids of a list of students.
  * @param {{
  *   id: Number,
  *   firstName: String,
  *   location: String
  * }[]} students - The list of students.
  * @author Bezaleel Olakunori <https://github.com/B3zaleel>
- * @returns
+ * @returns {Number}
  */
-export default function getListStudentIds(students) {
+export default function getStudentIdsSum(students) {
   if (students instanceof Array) {
-    return students.map((student) => student.id);
+    return students.reduce(
+      (prevStudent, curStudent) => prevStudent.id || prevStudent + curStudent.id,
+      0,
+    );
   }
-  return [];
+  return 0;
 }
